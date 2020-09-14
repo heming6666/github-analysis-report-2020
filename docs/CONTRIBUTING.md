@@ -1,14 +1,8 @@
 # Contributing Guide
 We would love for you to contribute to `github-analysis-report` and help make it even better than it is today! As a contributor, here are the guidelines we would like you to follow:
 
-- [Code of Conduct](#coc)
 - [Submitting an Issue](#issue)
 - [Submitting a Pull Request](#pr)
-- [Coding Rules](#rules)
-
-## <a name="coc"></a> Code of Conduct
-
-We have adopted a [Code of Conduct][coc] to help us keep `github-analysis-report` open and inclusive. Please read the full text so that you can understand what actions will and will not be tolerated.
 
 ## <a name="issue"></a> Submitting an issue
 
@@ -57,31 +51,23 @@ git checkout -b your-branch-name
 
 The name of branch should be semantic, avoiding words like 'update' or 'tmp'. We suggest to use `feature/xxx`, if the modification is about to implement a new feature.
 
-### 5. Make your changes
+### 5. Commit your changes
 
-Now you can create your patch or add `SQL` statement in the new branch. Please read and follow our [Code Rules](#rules).
-
-After you finish your modification, run the test and ensure that all tests pass.
-
-```shell
-npm test
-```
-
-### 6. Commit your changes
-
-Commit your changes If your changes pass the tests. You are encouraged to use [angular commit-message-format][angular-commit-message-format] to write commit message. In this way, we could have a more trackable history and an automatically generated changelog.
+Now you can create your patch or add `SQL` statement in the new branch, and commit your changes by:
 
 ```shell
 git add .
-git commit -m "fix: add license headers (#264)"
+git commit -sm "docs: add workflow doc (#26)"
 ```
 
-### 7. Sync your local repository with the upstream
+You are encouraged to use [angular commit-message-format][angular-commit-message-format] to write commit message. In this way, we could have a more trackable history and an automatically generated changelog.
+
+### 6. Sync your local repository with the upstream
 
 Keep your local repository updated with upstream repository by:
 
 ```shell
-git remote add upstream git@github.com:hypertrons/hypertrons.git
+git remote add upstream git@github.com:X-lab2017/github-analysis-report.git
 git fetch upstream master
 git rebase upstream/master
 ```
@@ -93,27 +79,23 @@ git add my-fix-file
 git rebase --continue
 ```
 
-### 8. Push your branch to GitHub
+### 7. Push your branch to GitHub
 
 ```shell
-git push -f origin branch-name
+git push -f origin your-branch-name
 ```
 
-### 9. Create a Pull Request
+### 8. Create a Pull Request
 
-In GitHub, send a pull request to `hypertrons:hypertrons`.
+In GitHub, send a pull request to [`X-lab2017/github-analysis-report`][repo].
 
 Please sign our [Contributor License Agreement (CLA)](#cla) before sending PRs.
-
-To make sure we can easily recap what happened previously, we have prepared a [pull request template][pr-template] and you need to fill out the PR template.
 
 The core team is monitoring for pull requests. We will review your pull request and either merge it, request changes to it, or close it with an explanation.
 
 If we suggest changes then:
 
 -   Make the required updates.
-
--   Re-run the test to ensure tests are still passing.
 
 -   Commit your changes with `--amend` and force push to your GitHub repository (this will update your Pull Request):
 
@@ -125,14 +107,16 @@ If we suggest changes then:
 
 That's it! Thank you for your contribution!
 
-### 10. After your pull request is merged
+You can refer to [workflow](https://www.x-lab.info/github-analysis-report/#/workflow?id=appendix) to see more information about the `PR` workflow with `SQL` files invovled.
+
+### 9. After your pull request is merged
 
 After your pull request is merged, you can safely delete your branch and pull the changes from the upstream repository:
 
 -   Delete the remote branch on GitHub either through the GitHub web UI or your local shell as follows:
 
     ```shell
-    git push origin --delete branch-name
+    git push origin --delete your-branch-name
     ```
 
 -   Check out the master branch:
@@ -144,7 +128,7 @@ After your pull request is merged, you can safely delete your branch and pull th
 -   Delete the local branch:
 
     ```shell
-    git branch -D my-fix-branch
+    git branch -D your-branch-name
     ```
 
 -   Update your master with the latest upstream version:
@@ -153,89 +137,17 @@ After your pull request is merged, you can safely delete your branch and pull th
     git pull --ff upstream master
     ```
 
-## <a name="rules"></a> Code Rules
-
-To ensure consistency throughout the source code, you need to pass TSLint checking and add apache license header.
-
-- [TSLint Checking](#tslint-checking)
-- [Apache License Header](#apache-license-header)
-
-### TSLint Checking
-
-Before committing your code, you should first run `npm run lint` to check your code style. In hypertrons, we use TSLint, which is an extensible static analysis tool that checks TypeScript code for readability, maintainability, and functionality errors. It is widely supported across modern editors & build systems and can be customized with your own lint rules, configurations, and formatters.
-
-If you use VSCode as your IDE, you may do the following steps to lint your code automatically.
-
-- install plugin `TSLint`
-- set the following content in .vscode/settings.json
-
-```json
-{
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
-  }
-}
-```
-
-- restart VSCode
-
-### Apache License Header
-
-If you add a new `ts` file in your modification, please make sure you add Apache License Header to all new files.
-
-```text
-// Copyright 2019 - present Xlab
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-```
-
-If you use VSCode as your IDE, you may do the following steps to add Apache License Header automatically.
-
--   install plugin `licenser`
-
--   set the following content in .vscode/settings.json
-
-    ```json
-    {
-      "licenser.author": "Xlab",
-      "licenser.projectName": "hypertrons",
-      "licenser.useSingleLineStyle": true,
-      "licenser.disableAutoHeaderInsertion": false,
-      "licenser.license": "AL2"
-    }
-    ```
-
--   restart VSCode
-
 ## <a name="cla"></a> Signing the CLA
 
 Please sign our [Contributor License Agreement (CLA)][cla] before sending pull requests. For any code
 changes to be accepted, the CLA must be signed.
 
-[coc]: ./CODE_OF_CONDUCT.md
-
 [new-issue]: https://github.com/hypertrons/hypertrons/issues/new
 
 [issue-label]: https://github.com/hypertrons/hypertrons/labels
 
-[good-first-issues]: https://github.com/hypertrons/hypertrons/issues?utf8=%E2%9C%93&q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22+
-
-[repo]: https://github.com/hypertrons/hypertrons
+[repo]: https://github.com/X-lab2017/github-analysis-report
 
 [angular-commit-message-format]: https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines
-
-[pr-template]: ./.github/pull_request_template.md
-
-[issue-template]: ./.github/issue_template.md
 
 [cla]: https://cla-assistant.io/hypertrons/hypertrons
